@@ -7,6 +7,7 @@
 
 	<title >Sign in </title>
 	<link rel="icon" type="universal-access.svg" href="universal-access.svg" >
+	<script src="signup.js" ></script>
 </head>
 <body>
 	<p id="demwxw"></p>
@@ -28,7 +29,7 @@
 		<div class="mb-3" >
   <label for="exampleFormControlInput1" class="form-label"><b>Email :</b></label></tr>
 
- <tr> <input id="dem" type="email" style="margin-top: -17px; width: 80%" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+ <tr> <input id="email" type="email" style="margin-top: -17px; width: 80%" class="form-control"  placeholder="name@example.com">
 </div></tr>
   <tr><div class="mb-3 row"  >
     <label for="inputPassword" class="col-sm-2 col-form-label"></label></tr></br>
@@ -36,14 +37,14 @@
     <div class="col-sm-10" style="width: 250px; margin-top: -50px" >
     	 <label for="exampleFormControlInput1" class="form-label"><b>Password :</b></label></tr>
 
-    <tr>  <input id="demo11" style="width: 80%" type="password" class="form-control" placeholder="password"><br></tr>
+    <tr>  <input id="pass" style="width: 80%" type="password" class="form-control" placeholder="password"><br></tr>
     </div>
 </table>
 <div >
 <input type="checkbox" name="chkbox" >
 <span style="text-align: left;">Remember me</span>
 <span style="margin: 130px;">Forget Password?</span><br>
-<span style="text-align: center; margin: 156px;paddingt: 5px; margin-bottom: 10px"><button type="button" class="btn btn-success" >Sign in</button></span>
+<span style="text-align: center; margin: 156px;paddingt: 5px; margin-bottom: 10px"><button type="button" class="btn btn-success" onclick="loginData()" >Sign in</button></span>
 </div>
 </div>
 <div class="second">
@@ -51,21 +52,12 @@
 		<span >____</span><br><br>
 		<span>Fill up personal information and</span><br><br>
 		<span>start journey with us..!!</span><br><br><br>
-		<span style="text-align: right; margin: 188px;paddingt: 5px; margin-bottom: 10px"><a href="signup.html" class="btn btn-warning"  role="button"><strong>Sign up</strong></a></span>
-		<button onclick="myfunction()">sddd</button>
+		<span style="text-align: right; margin: 188px;paddingt: 5px; margin-bottom: 10px"><a href="signup.html" class="btn btn-warning"  role="button" ><strong>Sign up</strong></a></span>
+		
 
 	</div>
 </div>
-	<script type="text/javascript">
-		function myfunction() {
-			 // alert(document.querySelector('#dem').value);
-			 alert(document.querySelector('#demo11').value);
-               
-
-			// body...
-		}
-
-	</script>
+	
 
 </body>
 </html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<head>
+    <title>Home Page</title>
+    <meta charset="utf-8" />
+    
+    <style>
+    
+        
+      
+      #one{
+        position: sticky;
+        top: 0; 
+      }
+        .card {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          background-image: url(b.jpg);
+          background-size: contain;
+          margin: 10px;
+          text-align: center;
+          font-family: arial;
+          font-size: 14px;
+          width: 30%;
+          height: 201px;
+          overflow: hidden;
+          overflow-y: scroll;
+        }
+        
+        .price {
+          color: grey;
+          font-size: 22px;
+        }
+         .card button {
+          border: none;
+          outline: 0;
+          padding: 12px;
+          color: white;
+          background-color:#454545;
+          text-align: center;
+          cursor: pointer;
+          width: 100%;
+          font-size: 18px;
+          
+        }
+        .card button:hover {
+          opacity: 0.7;
+        }
+        #hello:hover{
+          background-color: blue;
+        }
+        body{
+          background-image: url(images1.jpg);
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        .
+        </style>
+        <script type="text/javascript">
+          src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+        </script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="one">
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark" >
+  <div class="container-fluid" >
+    <img src="list.svg" style="background-color: orange;">
+    <a class="navbar-brand" href="#" style="color: white;"><b>&nbsp&nbsp&nbsp&nbspJob Drives</b></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a style="color: white;" class="nav-link active" aria-current="page" href="#"><b>Home&nbsp</b></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="color: white;"><b>About&nbsp</b></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="color: white;"><b>Contact&nbsp</b></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a  style="color: white;" class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Link&nbsp
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true" style="color: white;"><b>Link</b></a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button style="color: white;" class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+ 
+
+</div>
+<br>
+    <div id="app" ></div>
+</body>
+<script src="home.js"></script>
+</html>
+<script type="text/javascript">
+function fetchData(){
+    fetch("https://www.arbeitnow.com/api/job-board-api")
+    .then(response => {
+            if(!response.ok){
+                throw Error("ERROR");
+            }
+            return response.json();
+    })
+     .then(data => {
+        console.log(data.data);
+        const html = data.data 
+        .map(user => {return`
+           <div class="card" style="border:1px solid black; float:left;" >
+         
+            
+
+  <span style="background-color:yellow; padding:0px;"><b>Company_name: ${user.company_name}</b></span><br>
+  <span style="padding:0px;background-color:powderblue;">Title: ${user.title}</span></br>
+ 
+  <span style="background-color:yellow;">${user.tags} </span>
+   <span style="border:1px solid black; padding:0px;background-color:pink;">location: ${user.location}</span><br>
+  <p><button id="hello";margin-bottom:-50px; >Apply Here</button></p>
+</div><br> </div> 
+    
+            `;
+        })
+        .join("");
+        console.log(html);
+        document.querySelector("#app").insertAdjacentHTML("afterbegin",html);
+    })
+    .cache(error => {
+        console.log(error);
+    })
+}
+fetchData();
+$(document).ready(function(){
+  $("span").focus(function(){
+    $(this).css("display", "grid");
+  });
+  $("span").blur(function(){
+    $(this).css("background-color", "green");
+  });
+});
+  </script>
